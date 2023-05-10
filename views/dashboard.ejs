@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="<%= csrfToken %>" name="_csrf">
+    <title><%= title %></title>
+    <link href="./css/dashboard.css" rel="stylesheet">
+    <link href="./css/sessions.css" rel="stylesheet">
+    <link href="./css/nav.css" rel="stylesheet">
+</head>
+<body>
+<%- include("nav.ejs",{admin:admin}) %>
+<main>
+    <h1>Welcome back, <span class="user"><%= user %></span></h1>
+    <%- include("session-template.ejs",{title:"Joined Sessions",sport:joinedSports,session:joinedSessions,dashboard:dashboard}) %>
+    <%- include("session-template.ejs",{title:"Created Sessions",sport:createdSports,session:createdSessions,dashboard:dashboard}) %>
+</main>
+</body>
+</html>
