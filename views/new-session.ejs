@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="<%= csrfToken %>" name="_csrf">
+    <title><%= title %></title>
+    <link href="../../css/dashboard.css" rel="stylesheet">
+    <link href="../../css/nav.css" rel="stylesheet">
+    <link href="../../css/new.css" rel="stylesheet">
+</head>
+<body>
+<%- include("nav.ejs") %>
+<main>
+    <div class="breadcrumb">
+        <ul>
+            <li><a href="/sports">Sports</a></li>
+            <li>/</li>
+            <li><a href="/sports/<%= sport %>"><%= sport %></a></li>
+            <li>/</li>
+            <li><a href="#">New-Session</a></li>
+        </ul>
+    </div>
+    <div class="intro">
+        <h1>Add New Session For <%= sport %></h1>
+        <div class="buttons">
+            <a href="/sports/<%= sport %>" class="cancel">Cancel</a>
+        </div>
+    </div>
+    <form id="new-Session" action="/sports/<%= sport %>/new-session" method="post">
+        <input name="_csrf" type="hidden" value="<%= csrfToken %>">
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input id="location" name="location" type="text" required>
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required>
+            <label for="time">Time</label>
+            <input id="time" name="time" type="time" required>
+            <label for="required">Required</label>
+            <input id="required" name="required" min="1" type="number" required>
+            <button class="add" type="submit">Add</button>
+        </div>
+    </form>
+</main>
+</body>
+</html>
